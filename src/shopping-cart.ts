@@ -9,9 +9,12 @@ export interface Product {
 export interface Cart {
   products: Record<string, Product>;
   totalPrice: number;
-
+  salesTax?: number;
+  totalPriceWithTax?: number;
 }
 export class ShoppingCart {
+
+  private taxRate = 0.125;
 
   constructor(public cart: Cart = { products: {}, totalPrice: 0 }) {
   }
@@ -29,8 +32,10 @@ export class ShoppingCart {
 
     const productsPrice = Object.values(this.cart.products).reduce((total, product) => total + product.unitValue * product.quantity, 0)
 
-    this.cart.totalPrice = Number(productsPrice.toFixed(2))
 
+    this.cart.totalPrice = Number(productsPrice.toFixed(2))
+    this.cart.salesTax = Number((this.cart.totalPrice * this.taxRate).toFixed(0))
+    this.cart.totalPriceWithTax = Number((this.cart.totalPrice + this.cart.salesTax).toFixed(2))
     return this.cart;
   }
 
