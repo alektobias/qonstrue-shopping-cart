@@ -1,6 +1,6 @@
 {
   "name": "qonstrue-shopping-cart",
-  "module": "index.ts",
+  "module": "./src/shopping-cart.ts",
   "type": "module",
   "devDependencies": {
     "bun-types": "latest"

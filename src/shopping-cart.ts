@@ -36,6 +36,7 @@ export class ShoppingCart {
     this.cart.totalPrice = Number(productsPrice.toFixed(2))
     this.cart.salesTax = Number((this.cart.totalPrice * this.taxRate).toFixed(0))
     this.cart.totalPriceWithTax = Number((this.cart.totalPrice + this.cart.salesTax).toFixed(2))
+    
     return this.cart;
   }
 
